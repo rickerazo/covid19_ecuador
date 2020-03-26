@@ -80,20 +80,20 @@ np.save(str(date_of_model_fit)+'_exponential_model.npy', infected_predicted)
 
 plt.plot([16,16],[np.min(p1.contagiados), np.max(infected_predicted)],'--',linewidth = 10, label='estado de excepcion')
 plt.plot([19,19],[np.min(p1.contagiados), np.max(infected_predicted)],'--',linewidth = 10, label='toque de queda aumentado')
-plt.plot([26,26],[np.min(p1.contagiados), np.max(infected_predicted)],'--',linewidth = 10, label='toque de queda aumentado ++')
+plt.plot([25,25],[np.min(p1.contagiados), np.max(infected_predicted)],'--',linewidth = 10, label='toque de queda aumentado ++')
 
 
 ########### linear regression doesnt fit
 # r = linregress(predictor1, muertos_predicted)
 # plt.plot(predictor1, r.intercept + r.slope*predictor1, label = 'predicted trend')
 
-plt.title('Covid-19 en Ecuador')
+plt.title('Covid-19 en Ecuador. Polynomial fit model')
 plt.legend(fontsize = 30, loc=2)
 
 plt.xticks(np.arange(1,days_future[-1],5))
 
-plt.ylabel('Gente', fontsize=50,fontweight='bold')
-plt.xlabel('Dias desde paciente 1', fontsize=50,fontweight='bold')
+plt.ylabel('Poblacion (gente)', fontsize=50,fontweight='bold')
+plt.xlabel('Tiempo desde paciente 1 (dias)', fontsize=50,fontweight='bold')
 
 # plt.ion()
 # plt.show()
@@ -160,6 +160,15 @@ h2.plot(x, np.log(y), linewidth = 5, label='2x every 3 days')
 h2.text(7,1, 'Data: day '+str(days[-1])+', infected='+str(infected[-1]))
 
 h2.text(7,0.8, 'Projected: day '+str(x[-1])+', infected='+str(y[-1]))
+
+
+plt.plot([16,16],[np.min(np.log(infected)), np.max(np.log(infected))],'--',linewidth = 10, label='estado de excepcion')
+plt.plot([19,19],[np.min(np.log(infected)), np.max(np.log(infected))],'--',linewidth = 10, label='toque de queda aumentado')
+plt.plot([25,25],[np.min(np.log(infected)), np.max(np.log(infected))],'--',linewidth = 10, label='toque de queda aumentado ++')
+
+plt.ylabel('Polulation (log scale)', fontsize=50,fontweight='bold')
+plt.xlabel('Time since patient 1 (days)', fontsize=50,fontweight='bold')
+plt.title('Epidemilogy model of Covid-19 in Ecuador', fontsize=50,fontweight='bold')
 
 plt.legend(fontsize = 30, loc=2)
 
